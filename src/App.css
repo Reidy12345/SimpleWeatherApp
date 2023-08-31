@@ -13,7 +13,20 @@
   color: white;
 }
 
-.formWeather{
+.form-weather{
   display: flex;
   flex-direction: column;
+}
+
+.forecast-container{
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+}
+
+.forecast{
+  border: white 1px solid;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
 }
