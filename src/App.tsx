@@ -1,23 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Button, Form } from "react-bootstrap";
+import "./App.css";
+import { useState } from "react";
 
 function App() {
+  const [city, setCity] = useState<string>("");
+
+  function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setCity(e.target.value);
+  }
+
+  function handleFormSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    console.log(city);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Weather Forecast</h1>
+
+        <Form>
+          <Form.Group className="formWeather" controlId="formWeather">
+            <Form.Label>City</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter Your City Here"
+              value={city}
+              onChange={handleInputChange}
+            />
+          </Form.Group>
+
+          <Button variant="primary" type="submit" onClick={handleFormSubmit}>
+            Submit
+          </Button>
+        </Form>
+
+        <div className="forecast-container"></div>
       </header>
     </div>
   );
